@@ -5,10 +5,10 @@ import datetime
 
 print('-' * 31)
 print("Config collector tool - v1.2 Beta")
-print("For support please contact suhaib.saeed@bt.com")
+print("For support please contact saeed.suhaib@gmail.com")
 print('-' * 31)
 # Get username and password from user
-username = input("Please enter your ACS username. e.g. acs-b123456: ")
+username = input("Please enter your username ")
 password = getpass()
 
 # Open both files which have list of devices and commands to send to them
