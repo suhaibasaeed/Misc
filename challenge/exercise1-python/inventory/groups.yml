@@ -1,0 +1,10 @@
+---
+ios:
+  platform: ios
+  connection_options:
+    netmiko:
+      platform: cisco_ios
+      extras: {}
+    napalm:
+      extras:
+        optional_args: {}

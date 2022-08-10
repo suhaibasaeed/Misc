@@ -1,0 +1,17 @@
+---
+- get_interfaces:
+    GigabitEthernet3:
+      is_enabled: true
+      is_up: true
+    GigabitEthernet4:
+      is_enabled: true
+      is_up: true
+- get_interfaces_ip:
+    GigabitEthernet3:
+      ipv4:
+        10.10.23.2:
+          prefix_length: 24
+    GigabitEthernet4:
+      ipv4:
+        10.10.12.2:
+          prefix_length: 24

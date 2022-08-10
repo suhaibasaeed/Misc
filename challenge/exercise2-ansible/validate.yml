@@ -1,0 +1,12 @@
+- name: Use Napalm to automatically validate L2/L3 status
+  napalm.napalm.napalm_validate:
+    validation_file: "./validate/{{ inventory_hostname }}_interfaces.yml"
+  register: val_intf
+  ignore_errors: yes
+  tags: verify
+
+- name: Check if compliance check failed - skip if sucessful
+  fail:
+    msg: "Non-compliant state encountered. Refer to the report here: {{ val_intf.compliance_report }}."
+  when: not val_intf.compliance_report.complies
+  tags: verify

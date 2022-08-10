@@ -1,0 +1,56 @@
+(ntc) ntc@ntc-training:exercise2-ansible$ ./run.sh
+Enter your password: :
+
+PLAY [Cisco intf/BGP play] **********************************************************************************************************************
+
+TASK [Deploy interface config] ******************************************************************************************************************
+changed: [csr1]
+changed: [csr3]
+changed: [csr2]
+
+TASK [Deploy BGP config] ************************************************************************************************************************
+changed: [csr1]
+changed: [csr2]
+changed: [csr3]
+
+TASK [Include tasks for NAPALM validation] ******************************************************************************************************
+included: /home/ntc/challenge/exercise2-ansible/validate.yml for csr1, csr2, csr3
+
+TASK [Use Napalm to automatically validate L2/L3 status] ****************************************************************************************
+ok: [csr3]
+ok: [csr2]
+ok: [csr1]
+
+TASK [Check if compliance check failed - skip if sucessful] *************************************************************************************
+skipping: [csr1]
+skipping: [csr2]
+skipping: [csr3]
+
+TASK [Get BGP state via NAPALM getter] **********************************************************************************************************
+ok: [csr3]
+ok: [csr2]
+ok: [csr1]
+
+TASK [Get no. of BGP peers] *********************************************************************************************************************
+ok: [csr1]
+ok: [csr2]
+ok: [csr3]
+
+TASK [Check 2 BGP peers present] ****************************************************************************************************************
+ok: [csr1] => {
+    "changed": false,
+    "msg": "2 BGP peers present"
+}
+ok: [csr2] => {
+    "changed": false,
+    "msg": "2 BGP peers present"
+}
+ok: [csr3] => {
+    "changed": false,
+    "msg": "2 BGP peers present"
+}
+
+PLAY RECAP **************************************************************************************************************************************
+csr1                       : ok=7    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+csr2                       : ok=7    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+csr3                       : ok=7    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0

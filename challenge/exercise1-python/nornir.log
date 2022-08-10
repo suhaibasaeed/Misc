@@ -1,0 +1,36 @@
+2022-08-08 13:19:19,820 -  nornir.core -     INFO -        run() - Running task 'read_yaml' with args {} on 3 hosts
+2022-08-08 13:19:19,836 -  nornir.core -     INFO -        run() - Running task 'render_configs' with args {'template_name': 'interfaces.j2'} on 3 hosts
+2022-08-08 13:19:19,848 -  nornir.core -     INFO -        run() - Running task 'write_configs' with args {'config': 'interfaces'} on 3 hosts
+2022-08-08 13:19:19,850 -  nornir.core -     INFO -        run() - Running task 'deploy_configs' with args {'config': 'interfaces'} on 3 hosts
+2022-08-08 13:19:22,981 -  nornir.core -     INFO -        run() - Running task 'verify_l2' with args {} on 3 hosts
+2022-08-08 13:19:23,197 -  nornir.core -     INFO -        run() - Running task 'render_configs' with args {'template_name': 'bgp.j2'} on 3 hosts
+2022-08-08 13:19:23,205 -  nornir.core -     INFO -        run() - Running task 'write_configs' with args {'config': 'bgp'} on 3 hosts
+2022-08-08 13:19:23,207 -  nornir.core -     INFO -        run() - Running task 'deploy_configs' with args {'config': 'bgp'} on 3 hosts
+2022-08-08 13:19:26,190 -  nornir.core -     INFO -        run() - Running task 'verify_bgp_peers' with args {} on 3 hosts
+2022-08-08 13:40:38,155 -  nornir.core -     INFO -        run() - Running task 'read_yaml' with args {} on 3 hosts
+2022-08-08 13:40:38,173 -  nornir.core -     INFO -        run() - Running task 'render_configs' with args {'template_name': 'interfaces.j2'} on 3 hosts
+2022-08-08 13:40:38,184 -  nornir.core -     INFO -        run() - Running task 'write_configs' with args {'config': 'interfaces'} on 3 hosts
+2022-08-08 13:40:38,186 -  nornir.core -     INFO -        run() - Running task 'deploy_configs' with args {'config': 'interfaces'} on 3 hosts
+2022-08-08 13:40:41,312 -  nornir.core -     INFO -        run() - Running task 'verify_l2' with args {} on 3 hosts
+2022-08-08 13:40:41,552 -  nornir.core -     INFO -        run() - Running task 'render_configs' with args {'template_name': 'bgp.j2'} on 3 hosts
+2022-08-08 13:40:41,560 -  nornir.core -     INFO -        run() - Running task 'write_configs' with args {'config': 'bgp'} on 3 hosts
+2022-08-08 13:40:41,562 -  nornir.core -     INFO -        run() - Running task 'deploy_configs' with args {'config': 'bgp'} on 3 hosts
+2022-08-08 13:40:44,554 -  nornir.core -     INFO -        run() - Running task 'verify_bgp_peers' with args {} on 3 hosts
+2022-08-08 14:12:55,026 -  nornir.core -     INFO -        run() - Running task 'read_yaml' with args {} on 3 hosts
+2022-08-08 14:12:55,044 -  nornir.core -     INFO -        run() - Running task 'render_configs' with args {'template_name': 'interfaces.j2'} on 3 hosts
+2022-08-08 14:12:55,055 -  nornir.core -     INFO -        run() - Running task 'write_configs' with args {'config': 'interfaces'} on 3 hosts
+2022-08-08 14:12:55,057 -  nornir.core -     INFO -        run() - Running task 'deploy_configs' with args {'config': 'interfaces'} on 3 hosts
+2022-08-08 14:12:58,148 -  nornir.core -     INFO -        run() - Running task 'verify_l2' with args {} on 3 hosts
+2022-08-08 14:12:58,387 -  nornir.core -     INFO -        run() - Running task 'render_configs' with args {'template_name': 'bgp.j2'} on 3 hosts
+2022-08-08 14:12:58,395 -  nornir.core -     INFO -        run() - Running task 'write_configs' with args {'config': 'bgp'} on 3 hosts
+2022-08-08 14:12:58,397 -  nornir.core -     INFO -        run() - Running task 'deploy_configs' with args {'config': 'bgp'} on 3 hosts
+2022-08-08 14:13:01,357 -  nornir.core -     INFO -        run() - Running task 'verify_bgp_peers' with args {} on 3 hosts
+2022-08-08 14:27:48,252 -  nornir.core -     INFO -        run() - Running task 'read_yaml' with args {} on 3 hosts
+2022-08-08 14:27:48,268 -  nornir.core -     INFO -        run() - Running task 'render_configs' with args {'template_name': 'interfaces.j2'} on 3 hosts
+2022-08-08 14:27:48,279 -  nornir.core -     INFO -        run() - Running task 'write_configs' with args {'config': 'interfaces'} on 3 hosts
+2022-08-08 14:27:48,281 -  nornir.core -     INFO -        run() - Running task 'deploy_configs' with args {'config': 'interfaces'} on 3 hosts
+2022-08-08 14:27:51,516 -  nornir.core -     INFO -        run() - Running task 'verify_l2' with args {} on 3 hosts
+2022-08-08 14:27:51,754 -  nornir.core -     INFO -        run() - Running task 'render_configs' with args {'template_name': 'bgp.j2'} on 3 hosts
+2022-08-08 14:27:51,761 -  nornir.core -     INFO -        run() - Running task 'write_configs' with args {'config': 'bgp'} on 3 hosts
+2022-08-08 14:27:51,763 -  nornir.core -     INFO -        run() - Running task 'deploy_configs' with args {'config': 'bgp'} on 3 hosts
+2022-08-08 14:27:54,742 -  nornir.core -     INFO -        run() - Running task 'verify_bgp_peers' with args {} on 3 hosts

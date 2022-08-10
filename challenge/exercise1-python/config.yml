@@ -1,0 +1,10 @@
+---
+inventory:
+  plugin: SimpleInventory
+  options:
+    host_file: "/home/ntc/challenge/exercise1-python/inventory/hosts.yml"
+    group_file: "/home/ntc/challenge/exercise1-python/inventory/groups.yml"
+    defaults_file: "/home/ntc/challenge/exercise1-python/inventory/defaults.yml"
+
+logging:
+  enabled: true

@@ -1,0 +1,43 @@
+---
+
+- name: Cisco intf/BGP play
+  hosts: cisco
+  gather_facts: false
+  vars_prompt:
+    name: ansible_ssh_pass
+    prompt: "Enter your password: "
+    private: true
+
+  tasks:
+
+    - name: Deploy interface config
+      cisco.ios.ios_config:
+        src: templates/interfaces.j2
+      tags: deploy
+
+    - name: Deploy BGP config
+      cisco.ios.ios_config:
+        src: templates/bgp.j2
+      tags: deploy
+
+    - name: Include tasks for NAPALM validation
+      ansible.builtin.include_tasks: validate.yml
+      tags: verify
+
+    - name: Get BGP state via NAPALM getter
+      napalm.napalm.get_facts:
+        filter: bgp_neighbors
+      tags: verify
+
+    - name: Get no. of BGP peers
+      ansible.builtin.set_fact:
+        peers: "{{ napalm_bgp_neighbors.global.peers | length }}"
+      tags: verify
+
+    - name: Check 2 BGP peers present
+      ansible.builtin.assert:
+        that:
+          - peers == "2"
+        fail_msg: "Expecting 2 BGP peers, only {{ peers }} present"
+        success_msg: "2 BGP peers present"
+      tags: verify

@@ -1,0 +1,19 @@
+bgp:
+  asn: 65513
+  rid: 3.3.3.3
+  neighbors:
+    - ipaddr: 10.10.13.1
+      remote_asn: 65511
+    - ipaddr: 10.10.23.2
+      remote_asn: 65512
+interfaces:
+  GigabitEthernet2:
+    ipaddr: 10.10.13.3
+    mask: 255.255.255.0
+    description: Link to CSR1 - Gi2
+    state: up
+  GigabitEthernet3:
+    ipaddr: 10.10.23.3
+    mask: 255.255.255.0
+    description: Link to CSR2 - Gi3
+    state: up
