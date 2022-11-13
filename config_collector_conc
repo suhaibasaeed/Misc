@@ -1,0 +1,114 @@
+from scrapli import Scrapli
+import datetime
+import re
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from getpass import getpass
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+def get_time():
+    # Get the current time - This will be used in the file name
+    now = datetime.datetime.now()
+    # Structure the time in Date-Month-Year with Hours.Minutes
+    time_now = now.strftime("%d-%m-%y@%H.%M")
+
+    return time_now
+
+# Get list of devices from file
+def get_devices_file(device_file):
+    with open(device_file) as f:
+        
+        devices = f.read().splitlines()
+        # Remove whitespaces from lines and blank lines
+        devices = [i.strip() for i in devices]
+        devices = [x for x in devices if x]
+
+        return devices
+
+# Get list of device commands from file
+def get_commands(commands_file):
+    with open(commands_file) as f:
+        commands = f.read().splitlines()
+        # Remove whitespaces from lines and blank lines
+        commands = [i.strip() for i in commands]
+        commands = [x for x in commands if x]
+
+        return commands
+
+devices = get_devices_file("devices.txt")
+commands = get_commands("commands.txt")
+time_now = get_time()
+
+def ssh_conn(host, commands):
+
+    """
+    Connect to the device via Scrapli and execute commands in the list
+    :param device: device hostname
+    :param commands: Show commands to send to the device
+    :return: Output of the command from the device
+    """
+
+    device = {
+        "host": host,
+        "auth_strict_key": False,
+        "platform": "juniper_junos",
+        "auth_username": "ssaeed",
+        "auth_password": os.environ['TACACS_PASSWORD']
+    }
+
+    conn = Scrapli(**device)
+    # Open connection to the device
+    conn.open()
+    print(f"Successfully connected to {host}")
+    # Store result of prompt - Used in 
+    hostname = conn.get_prompt()
+    # Use RegEx to remove username & RE
+    hostname = re.search(r".*@(.*)>", hostname).group(1)
+        
+    # output/hostname - Used for final file name
+    complete_name = 'output/' + hostname
+
+    new_file = open(f"{complete_name}-{time_now}.txt", "a")
+    # Send commands from list to device
+    output = conn.send_commands(commands)
+    # Close connection to the device
+    conn.close()
+    # Loop through list of command output and commands - Use range(len(x)) as we're looping through 2 different lists at once
+    for i in range(len(output)):
+            # Write command and output to file
+            new_file.write(f"{commands[i]}\n")
+            new_file.write(f"{output[i].result}\n")
+            new_file.write(f"{'=' * 80}\n")
+    new_file.close()
+    print(f"DONE - Collected output from {hostname}")
+
+def main():
+    """
+    Use threading and Scrapli to connect to each device using concurrent futures. Execute commands on each device.
+    """
+    
+    # Specify how big the thread pool is
+    max_threads = 10
+    # Create instance of ThreadPoolExecutor object and pass in max_thread no
+    pool = ThreadPoolExecutor(max_threads)
+
+    future_list = []
+
+    # Loop through the devices
+    for device in devices:
+        # Start 10 child threads and submit them into the thread pool
+        future = pool.submit(ssh_conn, device, commands) # Pass in ssh_conn func, device and command args
+        # Append each thread to the list
+        future_list.append(future)
+
+    # Instead of waiting for all pending threads to finish - process them as they come in
+    for future in as_completed(future_list): # Pass in list created above into as_completed function
+        # Print result
+        if future.result() is not None:
+            print("Result" + future.result())
+
+if __name__ == '__main__':
+   main()
