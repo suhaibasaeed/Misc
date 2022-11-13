@@ -4,7 +4,8 @@ import os
 from getpass import getpass
 # Import relevant driver
 #from scrapli.driver.core import AsyncIOSXEDriver
-from scrapli.driver.core import AsyncNXOSDriver
+#from scrapli.driver.core import AsyncNXOSDriver
+from scrapli.driver.core import AsyncJunosDriver
 
 username = input("Please enter your username: ")
 password = getpass()
