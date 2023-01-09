@@ -54,7 +54,7 @@ def ssh_command(device, show_commands):
     # Loop through commands in the text file
     for i in range(len(show_commands)):
         # Find prompt - Gives us hostname which will be used later in writing the name of file
-        hostname = net_connection.find_prompt().rstrip('>').lstrip('root@')
+        hostname = net_connection.find_prompt().rstrip('>').lstrip(f'{username}@')
         # Create directory path we're writing files to - We want everything in output folder
         complete_name = os.path.join('output', hostname)
 
