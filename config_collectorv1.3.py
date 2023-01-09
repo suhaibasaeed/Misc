@@ -5,8 +5,7 @@ import datetime
 import os
 
 print('-' * 31)
-print("Config collector tool - v1.3 Beta")
-print("For support please contact saeed.suhaib@gmail.com")
+print("Config collector tool - v1.3")
 print('-' * 31)
 # Get username and password from user
 username = input("Please enter your username: ")
@@ -45,9 +44,9 @@ def ssh_command(device, show_commands):
 
     # Establish SSH connection to the network device using **kwargs to pull in details from dictionary
     net_connection = ConnectHandler(**juniper_device)
-    print("*" * 80)
+    print("*" * 40)
     print(f"Successfully connected to {device}")
-    print("*" * 80)
+    print("*" * 40)
     # Go into enable mode - fixes issue of show run on IOS being missed out
     net_connection.enable()
 
@@ -92,7 +91,7 @@ def main():
     """
 
     # Specify how big the thread pool is
-    max_threads = 8
+    max_threads = 20
     # Create instance of ThreadPoolExecutor object and pass in max_thread no
     pool = ThreadPoolExecutor(max_threads)
 
@@ -108,7 +107,8 @@ def main():
     # Instead of waiting for all pending threads to finish - process them as they come in
     for future in as_completed(future_list): # Pass in list created above into as_completed function
         # Print result
-        print("Result" + future.result())
+        #print("Result" + future.result())
+        print()
 
 
 if __name__ == '__main__':
