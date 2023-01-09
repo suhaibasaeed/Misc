@@ -10,7 +10,7 @@ print("For support please contact saeed.suhaib@gmail.com")
 print('-' * 31)
 # Get username and password from user
 username = input("Please enter your username: ")
-password = getpass()
+password = getpass("Enter your password: ")
 
 # Open both files which have list of devices and commands to send to them
 with open("devices.txt") as fp:
